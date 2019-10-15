@@ -28,13 +28,18 @@
         <main>
            <div class="propose-main">
                <form class="research-inf" action="">
-                    <label for="contact_name">Your name</label>
-                    <p><input type="text" placeholder="Enter name" name="contact_name" required maxlength="30" autocomplete="off"></p>
-
+                    <fieldset>
+                        <legend>Contact info</legend>
+                        <p>
+                            <label for="contact_name">Your name</label>
+                            <input type="text" placeholder="Enter name" name="contact_name" required maxlength="30" autocomplete="off">
+                        </p>
                     
-                    <label for="mail">Email</label>
-                    <p><input type="email" placeholder="Enter email" name="mail" required maxlength="50"></p>
-
+                        <p>
+                            <label for="mail">Email</label>
+                            <input type="email" placeholder="Enter email" name="mail" required maxlength="50">
+                        </p>
+                    </fieldset>
                     
                     <label for="contact_name">Research theme</label>
                     <p><input type="text" placeholder="Enter theme" name="research_theme" required maxlength="50" autocomplete="off"></p>
