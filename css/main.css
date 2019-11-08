@@ -78,23 +78,10 @@ body{
   }
 
 h2 {
-    /*
-    color: var(--main-txt-color);
-    text-decoration: none;
-    */
+    
     font-family: main_font2;
 }
-/*
-h3 {
-    color: var(--main-txt-color);
-    text-decoration: none;
-}
 
-p {
-    color: var(--main-txt-color);
-    text-decoration: none;
-}
-*/
 
 /* header */
 
@@ -111,7 +98,6 @@ header {
 
 .header_logo {
     height: 42px;
-   /* padding: 2px 8px; */
     
     margin: 4px;
     float: left;
@@ -135,11 +121,9 @@ header {
   
 .main-menu-container li a {
     display: block;
-    /*color: var(--main-txt-color);*/
     text-align: center;
     padding: 14px 16px;
 
-    /*text-decoration: none;*/
 }
   
 .main-menu-container li a:hover {
@@ -167,7 +151,6 @@ header {
         display: block;
         margin: 5px;
         font-size: 26px;
-        /*color: var(--main-txt-color);*/
         float: right;
 
         cursor: pointer;
@@ -218,9 +201,6 @@ footer{
     background-color: var(--main-bg-color);
     overflow: hidden;
     width: 100%;
-    /*position: absolute;
-    bottom: 0;*/
-    /*flex-grow : 1;*/
     flex-shrink: 0;
     margin-top: auto;
 }
@@ -241,30 +221,13 @@ footer{
     text-align: center;
 }
 
-/*
-.footer a {
-    color: var(--main-txt-color);
-    text-decoration: none;
-}
-*/
+
 .footer a:hover {
-    /*color: var(--main-txt-color);*/
     text-decoration: underline;
 }
-/*
-.footer h2 {
-    color: var(--main-txt-color);
-    text-decoration: none;
-}
-.footer p {
-    color: var(--main-txt-color);
-    text-decoration: none;
-}
-*/
+
 .footer_news_signup_cl {
     margin: 20px;
-    /*top: 30%;
-    position: relative;*/
 }
 
 
@@ -293,23 +256,11 @@ footer{
     padding: 10px;
     border-radius: 10px;
 }
-/*
-.main-guide h2 {
-    color: var(--main-txt-color);
-    text-decoration: none;
-    font-family: main_font2;
-}
 
-.main-guide p {
-    color: var(--main-txt-color);
-    text-decoration: none;
-}
-*/
 .inp_mail {
     background: transparent;
     border: 0;
     border-bottom: 2px solid var(--main-whbl-color);
-    /*color: var(--main-txt-color);*/
 }
 
 .btn_mail {
