@@ -6,15 +6,29 @@
     <title>Lunar Satation</title>
     <link href="css/main.css" rel="stylesheet">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
 </head>
-<body> <!--canvas, dialog, embed, -->
+<body> 
     <header class="header">
         <div class="header_logo">   <!--class and id-->
                 <a href='index.html'><img src="logo.png" alt = 'logo' id="image_logo"></a>  <!--Change logo, logo size--> 
+
+                <!--burger menu-->
+                <label for="toggle">&#9776</label>
+                <!--
+                <input type="checkbox" id="toggle"/>
+                burger menu-->
         </div>
         <div class="header_nav">
+            <!--burger menu
+            <label for="toggle">&#9776</label>
+            <input type="checkbox" id="toggle"/>
+            burger menu-->
             <nav>
+                <!--burger menu-->
+                <input type="checkbox" id="toggle"/>
+                <!--burger menu-->
                 <div class="main-menu-container"><ul>
                         <li><a href='index.html'>Main Page</a></li>
                         <li><a href='News.html'>News</a></li>
@@ -27,6 +41,14 @@
             </nav>
         </div>
     </header>
+
+<!--
+    {% include "html/header.html" %}
+    {% block content %}
+    {% endblock content %}
+    {% include "html/footer.html" %}
+    <?php include "html/header.html" ?>
+-->
     <main>
         <div class="main-guide">
             <section id="index-guide">
@@ -43,50 +65,13 @@
             </section>
             
             <!--section links-->
-        </div>
-
-
-        <div class=tmp_lab >
-            <div>   
-                <table title="Временная таблица">
-                    <caption>
-                            Table
-                    </caption>
-                    <tr>
-                            <th colspan="2" rowspan="2">1</th>
-                            <th>2</th>
-                            <th>3</th>
-                            <th rowspan="2">4</th>
-                    </tr>
-                    <tr>
-                            <th>5</th>
-                            <th>6</th>
-                    </tr>
-                    <tr>
-                            <th colspan="5">7</th>
-                           
-                    </tr>
-                    <tr>
-
-                            <th>8</th>
-                            <th>9</th>
-                            <th colspan="2">10</th>
-                            <th>11</th>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                            <p></p><iframe width="420" height="420" src="https://www.youtube.com/embed/zOPn5meO3lE"></iframe>
-                            
-            </div>
-        </div>  
-        
+        </div>        
         
     </main>
     <footer>
         <div class="footer">
             <div class="footer_info">
-                <h2 class="about-title">About</h2>
+                <h3 class="about-title">About</h3>
                 <div class = "textwidget">
                     <p>Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text.</p>
                     <p>Info text. Info text. Info text. Info text. Info text. Info text.</p>
@@ -95,10 +80,10 @@
                 </div>
             </div>
             <div class="footer_sub">
-                    <form accept-charset="UTF-8" id="footer_news_signup">
+                    <form accept-charset="UTF-8" id="footer_news_signup" class="footer_news_signup_cl">
                             <p>Sign Up to Receive the Latest Research News.</p>
-                            <input type=email required placeholder="Your email address" class='headerFont' id="email" name="email">
-                            <input type=submit value="Sign Up">
+                            <input type=email required placeholder="Your email address" class="inp_mail" id="email" name="email">
+                            <input type=submit value="Sign Up" class="btn_mail">
                             <!--
                             <div class="footerEmailSignupSocialButtons">
                                 <span>Follow us!</span>
