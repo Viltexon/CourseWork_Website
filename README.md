@@ -7,9 +7,19 @@ access levels:
 
 Pages:
 
-- Staff
+- Crew
 - Modules
 - Research
-- Resources
-- Tourism/Shop
+- Tourism
 - News
+
+Guest can:
+- Apply for a tour
+- Propose research
+- Subscribe to newsletter
+- See active Crew and Modules
+- Read News
+
+Crew can:
+- Change research status
+- Write news about completed research
