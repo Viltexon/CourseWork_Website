@@ -1,0 +1,29 @@
+
+.persona_spec{
+    margin: 5px;
+    border: 1px solid var(--main-whbl-color);
+    display: flex; 
+}
+
+.persona_spec_v{
+    margin: 5px;
+    padding: 5px;
+    color: black;
+    background: var(--main-whbl-color);
+    border-radius: 5px;
+}
+
+ @media only screen and (min-width: 600px){
+    .page_block{
+        display: flex;
+    }
+
+    .p_photo{
+         max-height: 200px;
+        min-width: 200px; 
+    }
+    .p_info{
+        margin: 20px;
+    }
+} 
+

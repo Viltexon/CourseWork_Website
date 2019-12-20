@@ -1,0 +1,47 @@
+{% extends "./Profile.html" %}
+{% load static %}
+
+{% block title %}Research Pending{% endblock %}
+
+{% block main_block %}
+
+
+{% if user.profile.crew %}
+
+<h2>
+    Research Pending
+</h2>
+
+{% for res in res_q %}
+<div class="page_block">
+    <div class="res_title">
+        <h2>
+            {{ res.r_topic }}
+        </h2>
+        
+        <form method="post">
+            {% csrf_token %}
+            <p class="btn-take"><button type="submit" name="take_btn" class="btn-primary" value="{{ res.id }}">Take</button></p> 
+        </form>
+    </div>
+    
+    <p>
+        {{ res.mod }}
+    </p>
+    <p>
+        {{ res.r_message }}
+    </p>
+
+    {{ res.id }}
+
+</div>
+{% endfor %}
+
+{% else %}
+<p>
+    Get Out!
+</p>
+{% endif %}
+
+    
+{% endblock %}

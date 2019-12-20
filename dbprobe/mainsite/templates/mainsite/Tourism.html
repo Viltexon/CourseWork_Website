@@ -1,0 +1,76 @@
+{% extends "./index.html" %}
+{% load static %}
+
+{% block title %}Tourism{% endblock %}
+
+{% block add_css %}
+<link href="{% static 'mainsite/css/tourism.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% load widget_tweaks %}
+{% block main_block %}
+
+<div class="page_block">
+        <h1>Tourism</h1>
+        <p>Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text.</p>
+        <p>Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text.</p>
+</div>
+<div class="page_block">
+    <h2>Apply for a tour</h2>
+
+
+    <form class="tour-form" method="post">
+        {% csrf_token %}
+
+        
+        <label for="contact_name">Name</label>
+        <p>
+            {% render_field tourism_form.t_name class="inp_name" placeholder="Enter name"  %}
+        </p>
+
+
+        <div class="rad-choice">
+
+            <b>Tour</b>
+                
+
+            <p>
+                {% render_field tourism_form.personal class="inp_name" placeholder="Oof"  %}
+            </p>
+            <!-- <ul>
+            <li>
+                
+                <input type = "radio" id="p-option" name="tour" value="personal">
+                <label for="p-option">personal</label>
+                
+                <div class="check"></div>
+            </li>
+              
+            <li>
+                
+                <input type = "radio" id="g-option" name="tour" value="group">
+                <label for="g-option">group</label>
+                
+                <div class="check"></div>
+              </li>
+              
+            </ul> -->
+        </div>
+
+
+        <label for="mail">Email</label>
+        <p>
+            {% render_field tourism_form.t_mail class="inp-mail" placeholder="Enter email"  %}
+        </p>    
+        
+        <label for = "text">Messenge</label>
+        <p class="p-inp-msg">
+            {% render_field tourism_form.t_message class="inp-msg"  %}
+        </p>
+        
+        <p><button type="submit" name="tour_apply_btn" class="btn-subm">Apply</button></p> 
+        
+    </form>
+</div>
+{% endblock %}

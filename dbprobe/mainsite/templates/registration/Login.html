@@ -1,0 +1,43 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    
+    <title>Login page</title>
+    <link href="{% static 'mainsite/css/profile.css' %}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
+</head>
+<body class="login_body"> 
+    <div class="login_container">
+        <p>
+            <h3 class="text-center mt-5 operation-title">Login</h3>
+        </p>
+        <form class="form" method="post" onsubmit="startSpinning();">
+            {% load widget_tweaks %}
+            {% csrf_token %}
+            <div class="login_fields" id="user-data">  
+                
+                <!-- form-group text-center mt-4 justify-content-around -->
+                
+                {{ form.username|add_class:"form-control mt-4"|attr:"placeholder:Login" }}
+                {{ form.password|add_class:"form-control mt-4"|attr:"placeholder:Password" }}
+                <input value="Submit" type="submit" class="btn btn-primary mt-4 significant-button" />
+                {% if form.errors %}
+                {{ form.non_field_errors }}
+                <ul>
+                    {% for field in form %}
+                    {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </form>
+        
+    </div>
+       
+</body>
+
+</html>

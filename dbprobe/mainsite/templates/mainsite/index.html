@@ -1,0 +1,91 @@
+{% load static %}
+{% load widget_tweaks %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    
+    <title>{% block title %}Lunar Satation{% endblock %}</title>
+    <link href="{% static 'mainsite/css/main.css' %}" rel="stylesheet">
+    {% block add_css %}{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
+</head>
+<body> 
+    <header class="header">
+        <div class="header_logo">   
+                <a href="{% url 'index' %}"><img src="{% static 'mainsite/logo.png' %}" alt = 'logo' id="image_logo"></a>  <!--Change logo, logo size--> 
+
+                <!--burger menu-->
+                <label for="toggle">&#9776</label>
+                
+        </div>
+        <div class="header_nav">
+            
+            <nav>
+                <!--burger menu-->
+                <input type="checkbox" id="toggle"/>
+                <!--burger menu-->
+                <div class="main-menu-container"><ul>
+                        <li><a href="{% url 'index' %}">Main Page</a></li>
+                        <li><a href="{% url 'news' %}">News</a></li>
+                        <li><a href="{% url 'crew' %}">Crew</a></li>
+                        <li><a href="{% url 'research' %}">Research</a></li>
+                        <li><a href="{% url 'modules' %}">Modules</a></li>
+                        <li><a href="{% url 'tourism' %}">Tourism</a></li>
+                </ul></div>
+                               
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block main_block %}
+        <div class="page_block">
+            <section id="index-guide">
+                <div class="sec1-inner">
+                    <h2>Aristarchus Plateau First Research Satation</h2>
+                    <p>Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text.</p>
+                    <p>Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text.</p>
+                    <p>Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text.</p>
+                    <h2>Our Mission</h2>
+                    <p>Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text.</p>
+                    <p>Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text.</p>
+                </div>
+
+            </section>
+            
+            
+        </div>        
+        {% endblock %}    
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer_info">
+                <h3 class="about-title">About</h3>
+                <div class = "textwidget">
+                    <p>Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text. Info text.</p>
+                    <p>Info text. Info text. Info text. Info text. Info text. Info text.</p>
+                    <hr>
+                    <p><a href="{% url 'contact' %}">Contact form</a></p> <!--TODO or not TODO-->
+                </div>
+            </div>
+            <div class="footer_sub">
+
+                    <form accept-charset="UTF-8" id="footer_news_signup" class="footer_news_signup_cl" method="post">
+                        {% csrf_token %}
+                        
+                            <p>Sign Up to Receive the Latest Research News.</p>
+
+                            {% render_field newsletter_form.s_mail class="inp_mail" placeholder="Your email address" %}
+
+                            <input type=submit name="newsletter_apply_btn" value="Sign Up" class="btn_mail">
+                            
+                        </form>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

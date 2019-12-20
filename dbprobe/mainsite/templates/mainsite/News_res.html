@@ -1,0 +1,48 @@
+{% extends "./index.html" %}
+{% load static %}
+
+{% block title %}News{% endblock %}
+
+
+{% block add_css %}
+<link href="{% static 'mainsite/css/news.css' %}" rel="stylesheet">
+{% endblock %}  
+
+{% block main_block %}
+
+{% if news_q %}
+
+{% for n_article in news_q %}
+    <div class="page_block">
+        <div class="news_head">
+            <h3>
+                {{ n_article.title }}
+            </h3>
+            <p class="news_by">
+                Created by {{ n_article.author.p_name }} from {{ n_article.res.r_topic }}
+            </p>
+            <p class="news_date">
+                {{ n_article.n_date }}
+            </p>
+        </div>
+
+        <div class="news_content">
+            {{ n_article.content }}
+        </div>
+
+    </div>
+      
+{% endfor %}
+
+{% else %}
+
+<div class="page_block">
+    <h3>
+        No news with this research.
+    </h3>
+</div>
+
+
+{% endif %}
+
+{% endblock %}

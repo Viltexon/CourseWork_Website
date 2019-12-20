@@ -1,0 +1,44 @@
+{% extends "./index.html" %}
+
+{% block title %}Research{% endblock %}
+
+{% block main_block %}
+
+<div class="page_block">
+      
+        <div class="research-filter">
+            <!--status, module...-->
+        </div>
+
+
+        <div class="articles-cont">
+            <article>
+                <div class="artcile-t">
+                        <h2>Info text.</h2>
+                        <p>Info text. Info text. Info text. Info text. Info text. Info text.</p>
+                </div>
+            </article>
+            <article>
+                <div class="artcile-t">
+                        <h2>Info text.</h2>
+                        <p>Info text. Info text. Info text. Info text. Info text. Info text.</p>
+                </div>
+            </article>
+            <article>
+                <div class="artcile-t">
+                        <h2>Info text.</h2>
+                        <p>Info text. Info text. Info text. Info text. Info text. Info text.</p>
+                </div>
+            </article>
+        </div>
+
+        <div class="propose-research">
+                <p><a href="{% url 'propose' %}">Propose experiment</a></p> 
+        </div>
+
+</div>
+
+
+{% endblock %}
+
+

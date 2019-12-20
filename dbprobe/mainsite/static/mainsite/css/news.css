@@ -1,0 +1,26 @@
+
+.search_form{
+    margin: 20px; 
+    background: var(--main-bg-color-tr);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.search_form_select, .search_form_option{
+    color: black;
+}
+
+.news_content{
+    margin: 15px;
+}
+.news_head{
+    margin: 15px;
+}
+
+.news_by{
+    color: gray;
+}
+
+.news_date{
+    color: gray;
+}

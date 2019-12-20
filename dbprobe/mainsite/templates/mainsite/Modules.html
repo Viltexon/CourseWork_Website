@@ -1,0 +1,27 @@
+{% extends "./index.html" %}
+{% load static %}
+
+{% block title %}Modules{% endblock %}
+
+{% block add_css %}
+<link href="{% static 'mainsite/css/crew.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block main_block %}
+
+
+{% for module in active_modules %}
+    <div class="page_block">
+        <div class="p_photo">
+            <img src="{% static 'mainsite/image/modules/'|add:module.mod_pic|add:'' %}" alt = '{{ module.mod_pic }}'>
+        </div>
+        <div class="p_info">
+                <h3>{{ module.mod_name }}</h3>
+                <p>{{ module.mod_description }}</p>
+
+        </div>
+    </div>        
+{% endfor %}
+
+
+{% endblock %}

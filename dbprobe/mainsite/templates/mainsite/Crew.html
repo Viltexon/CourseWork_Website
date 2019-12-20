@@ -1,0 +1,50 @@
+{% extends "./index.html" %}
+{% load static %}
+
+{% block title %}Crew{% endblock %}
+
+{% block add_css %}
+<link href="{% static 'mainsite/css/crew.css' %}" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block main_block %}
+
+<!-- 
+    Cache busting in Django? 
+
+    <script>
+        location.reload(true);
+    </script>
+-->
+
+{% for person in active_crew %}
+    <div class="page_block">
+        <div class="p_photo">
+            <img src="{% static 'mainsite/image/crew/'|add:person.pers_pic|add:'' %}" alt = '{{ person.pers_pic }}'>
+        </div>
+        <div class="p_info">
+            <h3>{{ person.p_name }}</h3>
+            <p>{{ person.p_bio }}</p>
+            <div class="persona_spec">
+                {% for connection in crew_spec_list %}
+                {% ifequal  person.id connection.crew.id %}
+
+                <div class="persona_spec_v">
+                    {{ connection.spec.sp_name }}
+                </div>
+                
+
+                {% endifequal  %}
+                {% endfor %}
+            </div>
+            
+
+        </div>
+    </div>        
+{% endfor %}
+
+
+
+{% endblock %}

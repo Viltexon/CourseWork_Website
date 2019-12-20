@@ -1,0 +1,81 @@
+{% extends "./index.html" %}
+{% load static %}
+
+{% block title %}Research form{% endblock %}
+
+{% block add_css %}
+<link href="{% static 'mainsite/css/propose.css' %}" rel="stylesheet">
+{% endblock %} 
+
+{% load widget_tweaks %}
+{% block main_block %}
+
+<div class="page_block">
+    <form class="research-inf" method="post">
+        {% csrf_token %}
+
+
+          <fieldset class = "prop_info">
+             <legend>Contact info</legend>
+             <p>
+                 <label for="contact_name">Your name</label>
+                {% render_field research_form.prop_name class="prop_name" placeholder="Enter name"  %}
+             </p>
+     
+             <p>
+                 <label for="mail">Email</label>
+                 {% render_field research_form.prop_mail class="prop_mail" placeholder="Enter mail"  %}
+             </p>
+         </fieldset>
+         
+
+         <div class="research_info_cont">
+            <label for="contact_name">Research theme</label>
+         <p>
+            {% render_field research_form.r_topic class="r_topic"  %}
+         </p>
+
+         <div class = "r_module_div">
+                 <p>
+                     <b>Module</b>   
+                     
+                    {% render_field research_form.mod class="mod_list"  %}
+                    {{ research_form.mod.mod_name }}
+                    
+                 </p>
+         </div>
+         
+         <label for = "text">Description</label>
+         <p>
+            {% render_field research_form.r_message class="r_message"  %}
+         </p> 
+
+         </div>
+         
+
+         <!-- <div>
+             <b>Required specialists</b>
+             <div>     
+                 <input type="checkbox" name="chk_spec[]" value="genetic biologist"><label>genetic biologist</label><br/>
+                 <input type="checkbox" name="chk_spec[]" value="botanist"><label>botanist</label><br/>
+                 <input type="checkbox" name="chk_spec[]" value="astronomer"><label>astronomer</label><br/>
+                 <input type="checkbox" name="chk_spec[]" value="psychologist"><label>psychologist</label><br/>
+             </div>                
+         </div> -->
+ 
+
+
+         <p><button type="submit" name="research_apply_btn" class="btn-subm">Apply</button></p>
+         {% if research_form.errors %}
+         {{ research_form.non_field_errors }}
+         <ul>
+             {% for field in research_form %}
+             {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+             {% endfor %}
+         </ul>
+         {% endif %}
+    </form>
+
+</div>
+
+{% endblock %}

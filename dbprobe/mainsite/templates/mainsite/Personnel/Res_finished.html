@@ -1,0 +1,20 @@
+{% extends "./Profile.html" %}
+{% load static %}
+
+{% block title %}Research Finished{% endblock %}
+
+{% block main_block %}
+       
+
+{% if user.profile.crew %}
+
+Research Finished
+
+{% else %}
+<p>
+    Get Out!
+</p>
+{% endif %}
+
+ 
+{% endblock %}

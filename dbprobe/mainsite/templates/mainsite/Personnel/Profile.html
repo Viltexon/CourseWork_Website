@@ -1,0 +1,64 @@
+
+
+
+{% load static %}
+{% load widget_tweaks %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    
+    <title>{% block title %}Profile{% endblock %}</title>
+    <link href="{% static 'mainsite/css/profile.css' %}" rel="stylesheet">
+    {% block add_css %}{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
+</head>
+<body> 
+    <header class="header">
+        
+        <div class="header_nav">
+            
+            <nav>
+                <div class="main-menu-container"><ul>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'Res_pending' %}">Research Pending</a></li>                    
+                    <li><a href="{% url 'Res_progress' %}">Research Progress</a></li>                    
+                    <!-- <li><a href="{% url 'Res_finished' %}">Research Finished</a></li>                     -->
+                    <li><a href="{% url 'News_post' %}">News Form</a></li>                 
+                    <li><a href="{% url 'logout_view' %}">Logout</a></li>
+                </ul></div>
+                               
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+        <div class="page_block">
+            {% block main_block %}
+
+            {% if user.profile.crew %}
+
+            <h2>
+                {{ user.username }}
+            </h2>
+            <p>
+                Status: {{ user.profile.crew.p_status }}
+            </p>
+            <p>
+                {{ user.profile.crew.p_bio }}
+            </p>
+            {% else %}
+            <p>
+                Get Out!
+            </p>
+            {% endif %}
+            {% endblock %} 
+        </div>        
+           
+    </main>
+</body>
+
+</html>

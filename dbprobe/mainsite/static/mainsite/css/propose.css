@@ -1,0 +1,53 @@
+
+.r_module_div {
+    margin: 5px;
+}
+
+.research_info_cont {
+    margin: 15px;
+}
+
+.prop_info {
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;	
+    border-radius:8px;
+    margin: 15px;
+}
+
+.prop_name, .prop_mail {
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid var(--main-whbl-color);
+} 
+
+
+.r_topic {
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid var(--main-whbl-color);
+} 
+
+
+.r_message {
+    background: var(--main-bg-color-tr);
+    width: 100%;
+    height: 150px;
+    border: 2px solid var(--main-whbl-color);
+    box-sizing: border-box;
+    resize: none;
+} 
+
+.mod_list {
+    background: var(--main-bg-color-tr);
+}
+
+
+.btn-subm {
+    background: var(--main-whbl-color);
+    padding: 15px 32px;
+    border-radius: 2px;
+    border: 2px solid black;
+    color: black;
+
+    cursor: pointer;
+}

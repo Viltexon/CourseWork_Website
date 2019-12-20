@@ -1,0 +1,65 @@
+{% extends "./Profile.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}News Form{% endblock %}
+
+{% block main_block %}
+
+
+{% if user.profile.crew %}
+
+<form class="research-inf" method="post">
+    {% csrf_token %}
+
+    <div class="page_block">
+        <form class="research-inf" method="post">
+            {% csrf_token %}
+    
+    
+            <p>
+                <b>Title</b>
+                <!-- <label for="research_title">Research title</label> -->
+                {% render_field news_form.title class="title" placeholder="Title"  %}
+            </p>
+            <p>
+                <b>Content</b> 
+                <!-- <label for="research_content">Content</label> -->
+                {% render_field news_form.content class="content"  %}
+            </p>
+            
+            <div class = "r_module_div">
+                <p>
+                    <b>Research</b>   
+                    
+                   {% render_field news_form.res class="res_list"  %}
+                   
+                </p>
+            </div>
+    
+             <p><button type="submit" name="news_post_btn" class="btn-primary">Post</button></p>
+             {% if news_form.errors %}
+             {{ news_form.non_field_errors }}
+             <ul>
+                 {% for field in news_form %}
+                 {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+                 {% endfor %}
+             </ul>
+             {% endif %}
+        </form>
+    
+    </div>
+
+</form>
+
+{% else %}
+<p>
+    Get Out!
+</p>
+{% endif %}
+
+  
+{% endblock %}
+
+
+

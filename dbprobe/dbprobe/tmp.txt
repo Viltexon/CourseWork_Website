@@ -1,0 +1,312 @@
+{% if N_list %}
+    <ul>
+    {% for p_m in N_list %}
+        <li>persona - {{ p_m.s_mail }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+def index(request):
+    N_list = Newsletter.objects.all()
+    context = {'N_list': N_list}
+    return render(request, 'mainsite/index.html', context)
+
+
+-----------------
+{% extends "./index.html" %}
+
+{% block title %}My amazing site{% endblock %}
+{% block add_css %}{% endblock %}
+
+{% block main_block %}{% endblock %}
+-----------------
+
+{% if N_list %}
+    <ul>
+    {% for p_m in N_list %}
+        <li>persona - {{ p_m.s_mail }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+
+<!--
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+<form action="{% url 'mainsite:submit' mail.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+{% endfor %}
+<input type="submit" value="Vote">
+</form>
+
+<form action="{% url 'mainsite:submit' mail.id %}" method="post" accept-charset="UTF-8" id="footer_news_signup" class="footer_news_signup_cl" >
+    <p>Sign Up to Receive the Latest Research News.</p>
+    <input type=email required placeholder="Your email address" class="inp_mail" id="email" name="email">
+    <input type=submit value="Sign Up" class="btn_mail">
+    
+</form>
+
+-->
+
+<form action="{% url 'mainsite:submit' mail.id %}" method="post" accept-charset="UTF-8" id="footer_news_signup" class="footer_news_signup_cl">
+    <p>Sign Up to Receive the Latest Research News.</p>
+    {% csrf_token %}
+    <input type=email value="{{ current_mail }}"  required placeholder="Your email address" class="inp_mail" id="email" name="email">
+    <input type=submit value="Sign Up" class="btn_mail">
+</form>
+
+<!--
+    
+    https://www.youtube.com/watch?v=A-7vGF_pEss
+    https://docs.djangoproject.com/en/3.0/intro/tutorial04/
+    https://www.youtube.com/watch?v=W5Gjcs6QwEs
+
+-->
+
+
+
+
+
+*****************************       views
+
+
+def index(request):
+    N_list = Newsletter.objects.all()
+    context = {'N_list': N_list}
+    return render(request, 'mainsite/index.html', context)
+
+
+
+# bruh.................
+def submit(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    try:
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+    except (KeyError, Choice.DoesNotExist):
+        # Redisplay the question voting form.
+        return render(request, 'polls/detail.html', {
+            'question': question,
+            'error_message': "You didn't select a choice.",
+        })
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+# bruh.................end
+
+
+
+
+
+
+
+
+action=""
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+<form class="tour-form" > 
+                
+                <!--
+                    method="post"
+
+                    {% csrf_token %}
+                    action=""
+                    {{ form }}
+                -->
+                <label for="contact_name">Name</label>
+                <p><input type="text" placeholder="Enter name" name="contact_name"  required maxlength="30" autocomplete="off" class="inp_name"></p>
+                <!--{{ Tourism.t_name }}-->
+               <!--
+                   <form action="{% url 'polls:vote' question.id %}" method="post">
+                    {% csrf_token %}
+                    {% for choice in question.choice_set.all %}
+                        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                    {% endfor %}
+                    <input type="submit" value="Vote">
+                    </form>
+               --> 
+
+            <div class="rad-choice">
+
+
+                <!--
+                    {% for radio in myform.beatles %}
+                    <label for="{{ radio.id_for_label }}">
+                    {{ radio.choice_label }}
+                    <span class="radio">{{ radio.tag }}</span>
+                    </label>
+                    {% endfor %}
+                -->
+
+
+                <b>Tour</b>
+                    
+                <ul>
+                <li>
+                    
+                    <input type = "radio" id="p-option" name="tour" value="personal">
+                    <label for="p-option">personal</label>
+                    
+                    <div class="check"></div>
+                </li>
+                  
+                <li>
+                    
+                    <input type = "radio" id="g-option" name="tour" value="group">
+                    <label for="g-option">group</label>
+                    
+                    <div class="check"></div>
+                  </li>
+                  
+                </ul>
+            </div>
+
+            
+                <label for="mail">Email</label>
+                <p><input type="email" placeholder="Enter email" name="mail" required maxlength="50" class="inp-mail"></p>    
+                <!--{{ Tourism.t_mail }}{{ Tourism.t_message }}-->
+                <label for = "text">Messenge</label>
+                <p class="p-inp-msg"><textarea rows="4" cols = "50" maxlength="500"  class="inp-msg"></textarea></p>
+                <p><button type="submit" class="btn-subm">Apply</button></p>
+                
+            </form>
+</div>
+
+{% endblock %}
+
+
+
+**********************************widget tweaks
+
+
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+  <h2>Add person</h2>
+  <form method="post">
+    {% csrf_token %}
+
+    {% for hidden in form.hidden_fields %}
+      {{ hidden }}
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+      <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field|add_class:'form-control' }}
+        {% for error in field.errors %}
+          <span class="help-block">{{ error }}</span>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">
+        <span class="glyphicon glyphicon-ok"></span> Save
+      </button>
+      <a href="{% url 'home' %}" class="btn btn-default">Cancel</a>
+    </div>
+  </form>
+{% endblock %}
+
+
+
+
+-------------------------------User-------------------
+
+
+
+class UserManager(BaseUserManager):
+
+    def create_user(self, email, password=None,
+        first_name=None, last_name=None):
+        if not email:
+            raise ValueError('Users must have an email address')
+
+        user = self.model(
+            email=self.normalize_email(email),
+            first_name=first_name,
+            last_name=last_name
+        )
+
+        user.set_password(password)
+        user.save(using=self._db)
+
+        return user
+
+    def create_superuser(self, email, password):
+        user = self.create_user(
+            email,
+            password=password,
+        )
+        user.is_admin = True
+        user.save(using=self._db)
+
+        return user
+
+
+class User(AbstractBaseUser):
+
+    email = models.EmailField(
+        verbose_name='email address',
+        max_length=50,
+        unique=True,
+    )
+    first_name = models.CharField(max_length=30, null=True, blank=True)
+    last_name = models.CharField(max_length=30, null=True, blank=True)
+
+    not_read = models.PositiveIntegerField(default=1)
+
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)  # a superuser
+    # notice the absence of a "Password field", that's built in.
+
+    # crew_id = models.ForeignKey(Crew, models.DO_NOTHING)
+
+    objects = UserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    @property
+    def is_staff(self):
+        "Is the user a member of staff?"
+        # Simplest possible answer: All admins are staff
+        return self.is_admin
+
+    def get_full_name(self):
+        # The user is identified by their email address
+        return self.email
+
+    def get_short_name(self):
+        # The user is identified by their email address
+        return self.email
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.email
+
+    def has_perm(self, perm, obj=None):
+        """Does the user have a specific permission?"""
+        # Simplest possible answer: Yes, always
+        return True
+
+    def has_module_perms(self, app_label):
+        """Does the user have permissions to view the app `app_label`?"""
+        # Simplest possible answer: Yes, always
+        return True

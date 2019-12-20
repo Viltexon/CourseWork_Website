@@ -1,0 +1,55 @@
+{% extends "./index.html" %}
+{% load static %}
+
+{% block title %}News{% endblock %}
+
+
+{% block add_css %}
+<link href="{% static 'mainsite/css/news.css' %}" rel="stylesheet">
+{% endblock %}  
+
+{% block main_block %}
+    <div class="search_form">
+        <p id="demo"></p>
+    <script>
+            let d = new Date();
+            document.getElementById("demo").innerHTML = "<h1>Today's date is " + d + "</h1>";
+    </script> 
+    </div>
+    
+
+    <div class="search_form">
+        <select class="search_form_select" onchange="location = this.value;">
+            {% for res_ex in res_q %}
+            <option class="search_form_option" value="{% url 'research_news'  res_ex.id  %}" >
+                {{ res_ex.r_topic }}               
+            </option>
+            
+            
+            {% endfor %}
+        </select>
+
+    </div>
+
+    {% for n_article in news_q %}
+    <div class="page_block">
+        <div class="news_head">
+            <h3>
+                {{ n_article.title }}
+            </h3>
+            <p class="news_by">
+                Created by {{ n_article.author.p_name }} from {{ n_article.res.r_topic }}
+            </p>
+            <p class="news_date">
+                {{ n_article.n_date }}
+            </p>
+        </div>
+
+        <div class="news_content">
+            {{ n_article.content }}
+        </div>
+
+    </div>
+      
+    {% endfor %}
+{% endblock %}
